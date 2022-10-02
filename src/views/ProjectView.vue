@@ -21,7 +21,7 @@
         <div class="flex items-center justify-between">
           <p class="font-medium">Doing</p>
           <p class="text-green-600 px-3 py-1 rounded-md bg-green-200">
-            {{ done.length }}
+            {{ doing.length }}
           </p>
         </div>
         <div
@@ -37,7 +37,7 @@
         <div class="flex items-center justify-between">
           <p class="font-medium">Completed</p>
           <p class="text-green-600 px-3 py-1 rounded-md bg-green-200">
-            {{ doing.length }}
+            {{ done.length }}
           </p>
         </div>
         <div
