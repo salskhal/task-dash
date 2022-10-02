@@ -8,9 +8,10 @@
           <input
             type="text"
             id="first_name"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none block w-full p-2.5"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none block w-full p-2.5 capitalize"
             placeholder="John"
             required
+            v-model="title"
           />
         </div>
         <div>
@@ -19,18 +20,22 @@
           <textarea
             class="focus:outline-none p-2.5 bg-gray-50"
             placeholder="Some Text...."
+            v-model="description"
           ></textarea>
+          
         </div>
         <div>
           <h3>Status</h3>
           <select
             id="countries"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+            v-model="status"
           >
-            <option selected>Todo</option>
+            <option>Todo</option>
             <option>Doing</option>
             <option>Done</option>
           </select>
+        
         </div>
         <button
           class="bg-green-800 w-full mt-3 rounded-full py-3 text-white font-medium text-lg"
@@ -50,19 +55,28 @@ import { defineEmits } from 'vue'
 
 const emit = defineEmits(['close'])
 
+let title = ref("")
+let description = ref("")
+let status = ref("")
 
 
 const store = useCounterStore();
 
-const todo = ref({
-  id: Math.floor(Math.random() * 100),
-  title: "algiers",
-  description: "We will be travelling to algiers this month Insha'Allah",
-  status: "todo",
-});
+
 
 const addToTask = () =>{
+  if (title.value.trim() === '' || description.value.trim() === '' || status.value.trim() === '') {
+		return
+	}
+  
+  const todo = ref({
+    id: Math.floor(Math.random() * 100),
+    title: title.value,
+    description: description.value,
+    status: status.value,
+  });
   store.addTodo(todo.value)
+  console.log(todo.value)
   emit('close')
 }
 </script>
