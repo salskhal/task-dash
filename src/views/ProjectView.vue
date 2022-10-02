@@ -26,7 +26,7 @@
         </div>
         <div
           class="bg-white py-8 px-4 rounded-xl"
-          v-for="tod in done"
+          v-for="tod in doing"
           :key="tod.id"
         >
           <h1 class="font-semibold text-lg mb-3 uppercase">{{ tod.title }}</h1>
@@ -42,7 +42,7 @@
         </div>
         <div
           class="bg-white py-8 px-4 rounded-xl"
-          v-for="tod in doing"
+          v-for="tod in done"
           :key="tod.id"
         >
           <h1 class="font-semibold text-lg mb-3 uppercase">{{ tod.title }}</h1>
