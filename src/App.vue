@@ -3,11 +3,14 @@
     <div v-if="showModal">
       <AddTask @close="toggleModal" />
     </div>
+    <div v-if="editModal">
+      <ShowModal @close="toggleEditModal"/>
+    </div>
     <!-- Sidebar -->
     <Sidebar />
     <div class="main">
       <Navbar @open="toggleModal" />
-      <router-view />
+      <router-view @makeappear="toggleEditModal"/>
     </div>
     <!-- Content -->
   </div>
@@ -18,10 +21,15 @@ import Sidebar from "./components/Sidebar.vue";
 import Navbar from "./components/Navbar.vue";
 import AddTask from "./components/AddTask.vue";
 import { ref } from "@vue/reactivity";
+import ShowModal from "./components/ShowModal.vue";
 let showModal = ref(false);
+let editModal = ref(false);
 
 const toggleModal = () => {
   showModal.value = !showModal.value;
+};
+const toggleEditModal = () => {
+  editModal.value = !editModal.value
 };
 </script>
 

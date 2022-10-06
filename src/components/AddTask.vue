@@ -1,6 +1,6 @@
 <template>
   <div class="backdrop" @click.self="$emit('close')">
-    <div class="modal">
+    <div class="modal w-4/5 md:w-2/5">
       <h3 class="font-semibold text-xl mb-4">Add New Task</h3>
       <form class="flex flex-col gap-4">
         <div>
@@ -51,7 +51,7 @@
 <script setup>
 import { useCounterStore } from "@/stores/tasks";
 import { ref } from "@vue/reactivity";
-import { defineEmits } from 'vue'
+
 
 const emit = defineEmits(['close'])
 
@@ -68,9 +68,9 @@ const addToTask = () =>{
   if (title.value.trim() === '' || description.value.trim() === '' || status.value.trim() === '') {
 		return
 	}
-  
+
   const todo = ref({
-    id: Math.floor(Math.random() * 100),
+    id: Date.now(),
     title: title.value,
     description: description.value,
     status: status.value,
@@ -83,16 +83,16 @@ const addToTask = () =>{
 
 <style scoped lang="scss">
 .modal {
-  width: 40%;
+  // width: 40%;
   padding: 60px 40px;
   background: white;
   border-radius: 10px;
-  h1 {
-    margin-bottom: 30px;
-  }
-  @media (max-width: 1024px) {
-    width: 80vw;
-  }
+  // h1 {
+  //   margin-bottom: 30px;
+  // }
+  // @media (max-width: 1024px) {
+  //   width: 80vw;
+  // }
 }
 .backdrop {
   top: 0;

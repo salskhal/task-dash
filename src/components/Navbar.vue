@@ -2,7 +2,7 @@
   
     <nav class="flex items-center   justify-between">
       <h3 class="font-semibold text-2xl">Projects</h3>
-      <button @click.self="$emit('open')" class=" p-3 bg-green-800  rounded-full text-white hover:bg-[green]">+Add Task</button>
+      <button @click="$emit('open')" class=" p-3 bg-green-800  rounded-full text-white hover:bg-[green]">+Add Task</button>
     </nav>
 
 </template>

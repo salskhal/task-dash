@@ -23,7 +23,7 @@ export const useCounterStore = defineStore("task", () => {
     task.value = JSON.parse(localStorage.getItem("task"));
   }
 
-  console.log(task.value);
+  const currentSelected = ref({})
 
   watch(
     task,
@@ -36,5 +36,5 @@ export const useCounterStore = defineStore("task", () => {
   //     count.value++;
   //   }
 
-  return { task, todos, done, doing, addTodo };
+  return { task, todos, done, doing, addTodo, currentSelected};
 });

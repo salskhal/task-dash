@@ -8,14 +8,7 @@
             {{ todos.length }}
           </p>
         </div>
-        <div
-          class="bg-white py-8 px-4 rounded-xl"
-          v-for="tod in todos"
-          :key="tod.id"
-        >
-          <h1 class="font-semibold text-lg mb-3 uppercase">{{ tod.title }}</h1>
-          <p class="text-gray-400">{{ tod.description }}</p>
-        </div>
+        <StatusCard :status="todos" @appear="show" />
       </div>
       <div class="bg-slate-100 px-4 py-8 flex flex-col gap-3 rounded-2xl">
         <div class="flex items-center justify-between">
@@ -24,14 +17,7 @@
             {{ doing.length }}
           </p>
         </div>
-        <div
-          class="bg-white py-8 px-4 rounded-xl"
-          v-for="tod in doing"
-          :key="tod.id"
-        >
-          <h1 class="font-semibold text-lg mb-3 uppercase">{{ tod.title }}</h1>
-          <p class="text-gray-400">{{ tod.description }}</p>
-        </div>
+        <StatusCard :status="doing" @appear="show" />
       </div>
       <div class="bg-slate-100 px-4 py-8 flex flex-col gap-3 rounded-2xl">
         <div class="flex items-center justify-between">
@@ -40,14 +26,7 @@
             {{ done.length }}
           </p>
         </div>
-        <div
-          class="bg-white py-8 px-4 rounded-xl"
-          v-for="tod in done"
-          :key="tod.id"
-        >
-          <h1 class="font-semibold text-lg mb-3 uppercase">{{ tod.title }}</h1>
-          <p class="text-gray-400">{{ tod.description }}</p>
-        </div>
+        <StatusCard :status="done" @appear="show" />
       </div>
     </div>
   </main>
@@ -57,6 +36,14 @@
 import { storeToRefs } from "pinia";
 
 import { useCounterStore } from "@/stores/tasks";
+import StatusCard from "../components/StatusCard.vue";
+
+const emit = defineEmits(['makeappear'])
+
+
+const show = () =>{
+  emit("makeappear")
+}
 
 const store = useCounterStore();
 
